@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Secure document and message submission portal">
+  <title>Secure Submission Portal</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Submission Portal home">
+      <span class="brand-mark">✉</span><span>Submission Portal</span>
+    </a>
+    <span class="secure-label"><span class="dot"></span> Secure submission</span>
+  </header>
+
+  <main class="shell">
+    <section class="intro">
+      <div class="eyebrow">DOCUMENT & MESSAGE CENTER</div>
+      <h1>Send us your information<br><span>securely and easily.</span></h1>
+      <p>Use this portal to send a message and, if needed, attach supporting documents. A confirmation will appear after your submission is received.</p>
+      <div class="trust-row"><span>✓ Encrypted in transit</span><span>✓ Attach supporting files</span><span>✓ Direct submission</span></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <div><h2>Submission form</h2><p>Fields marked with * are required.</p></div>
+        <span class="step">01 / 01</span>
+      </div>
+
+      <form id="submission-form">
+        <div class="grid">
+          <label>Full name *<input name="name" autocomplete="name" required maxlength="120" placeholder="Your full name"></label>
+          <label>Email address *<input name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com"></label>
+          <label>Organization <span class="optional">(optional)</span><input name="organization" maxlength="150" placeholder="Company or organization"></label>
+          <label>Subject *<input name="subject" required maxlength="180" placeholder="What is this submission about?"></label>
+        </div>
+        <label class="message-label">Message *<textarea name="message" required rows="6" maxlength="8000" placeholder="Enter the details of your message..."></textarea></label>
+
+        <label class="upload" for="attachments">
+          <span class="upload-icon">↑</span>
+          <span><strong>Attach documents</strong><small>PDF, Word, Excel, images or text files · Up to 8 MB total</small></span>
+          <span class="choose">Choose files</span>
+          <input id="attachments" name="attachments" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.txt">
+        </label>
+        <div id="file-list" class="file-list" aria-live="polite"></div>
+
+        <label class="consent"><input type="checkbox" name="consent" required><span>I confirm that the information and files submitted are intended for the recipient and that I am authorized to share them.</span></label>
+
+        <!-- Honeypot anti-spam field: leave empty -->
+        <div class="hp" aria-hidden="true"><label>Do not fill this field<input name="website" tabindex="-1" autocomplete="off"></label></div>
+
+        <button id="submit-button" type="submit"><span>Submit information</span><span aria-hidden="true">→</span></button>
+        <p class="privacy-note">Do not submit passwords, payment card details, or other highly sensitive credentials through this form.</p>
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+    <footer>© <span id="year"></span> Submission Portal. Please contact the organization directly if you need assistance.</footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
